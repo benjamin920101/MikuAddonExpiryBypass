@@ -2,14 +2,9 @@ package com.example.mixin;
 
 import net.minecraft.server.MinecraftServer;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(MinecraftServer.class)
 public class ExampleMixin {
-	@Inject(at = @At("HEAD"), method = "loadLevel()V", remap = false)
-	private void init(CallbackInfo info) {
-		// This code is injected into the start of MinecraftServer.loadLevel()V
-	}
+	// Example injection removed: method name/descriptor didn't match target in this
+	// environment. Re-add a valid @Inject when you know the correct target.
 }

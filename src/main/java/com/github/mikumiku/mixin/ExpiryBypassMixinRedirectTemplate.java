@@ -1,5 +1,6 @@
 package com.github.mikumiku.mixin;
 
+import com.example.targetmod.TargetClass;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
@@ -12,7 +13,7 @@ import java.util.Date;
  *
  * 注意：如果目標在 obfuscated 環境，請改用對應映射後的類名或使用 targets 的 remap 設定。
  */
-@Mixin(targets = "com.example.targetmod.TargetClass", remap = false)
+@Mixin(value = TargetClass.class, remap = false)
 public class ExpiryBypassMixinRedirectTemplate {
 
     private static final long TARGET_TIMESTAMP = 1773504000082L;
