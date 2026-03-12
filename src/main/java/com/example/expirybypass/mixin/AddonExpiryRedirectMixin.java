@@ -49,7 +49,8 @@ public class AddonExpiryRedirectMixin {
     private static final boolean USE_SYSTEM_TIME = false;
 
     @Redirect(
-        method = "<init>",
+        // 攔截目標類別中所有方法裡的 Date.after 呼叫（包含建構子與靜態初始化）
+        method = {"*"},
         at = @At(value = "INVOKE", target = "Ljava/util/Date;after(Ljava/util/Date;)Z"),
         remap = false
     )
