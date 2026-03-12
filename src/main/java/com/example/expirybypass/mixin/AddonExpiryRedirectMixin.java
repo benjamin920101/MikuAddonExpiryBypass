@@ -4,6 +4,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Pseudo;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
+import org.spongepowered.asm.mixin.injection.ModifyArg;
 
 import java.util.Date;
 
@@ -66,5 +67,20 @@ public class AddonExpiryRedirectMixin {
         } catch (Throwable ignored) {
         }
         return instance.after(other);
+    }
+
+    @ModifyArg(
+        method = {"*"},
+        at = @At(value = "INVOKESPECIAL", target = "Ljava/util/Date;<init>(J)V"),
+        remap = false
+    )
+    private long modifyDateLongArg(long time) {
+        try {
+            if (time == TARGET_TIMESTAMP) {
+                return 0L; // 改成不會造成過期的時間
+            }
+        } catch (Throwable ignored) {
+        }
+        return time;
     }
 }
