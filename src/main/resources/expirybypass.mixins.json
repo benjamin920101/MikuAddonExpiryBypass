@@ -4,7 +4,8 @@
   "package": "com.example.expirybypass.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "ExpiryBypassMixin"
+    "ExpiryBypassMixin",
+    "AddonExpiryRedirectMixin"
   ],
   "injectors": {
     "defaultRequire": 1
