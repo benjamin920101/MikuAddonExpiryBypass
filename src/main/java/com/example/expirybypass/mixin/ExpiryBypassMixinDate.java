@@ -7,7 +7,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.Date;
 
-@Mixin(targets = "java.util.Date")
+@Mixin(value = java.util.Date.class, remap = false)
 public class ExpiryBypassMixinDate {
 
     // 目標時間戳，僅在等於此值時才繞過（可改成從 config 讀取或改成 Set）

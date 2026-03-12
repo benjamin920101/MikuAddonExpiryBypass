@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "expirybypass",
-  "version": "${version}",
+  "version": "1.0.0",
   "name": "ExpiryBypass",
   "description": "Bypasses expiry date checks in mods.",
   "authors": [
