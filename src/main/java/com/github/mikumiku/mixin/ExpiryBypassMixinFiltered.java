@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class ExpiryBypassMixinFiltered {
     private static final long TARGET = 1773504000082L;
 
-    @Inject(method = "after(Ljava/util/Date;)Z", at = @At("HEAD"), cancellable = true)
+    @Inject(method = "after(Ljava/util/Date;)Z", at = @At("HEAD"), cancellable = true, remap = false)
     private void onAfter(java.util.Date other, CallbackInfoReturnable<Boolean> cir) {
         try {
             if (other != null && other.getTime() == TARGET) {
