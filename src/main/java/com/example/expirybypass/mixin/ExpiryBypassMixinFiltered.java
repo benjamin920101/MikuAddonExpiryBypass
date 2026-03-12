@@ -1,3 +1,7 @@
+// ExpiryBypassMixinFiltered.java — 已停用
+// 原始檔案保留為範例，但已移除實作以避免在 runtime 被註冊為 mixin。
+
+/*
 package com.example.expirybypass.mixin;
 
 import org.spongepowered.asm.mixin.Mixin;
@@ -7,18 +11,13 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 
 import java.util.Date;
 
-/**
- * 範例 mixin：僅在 other.getTime() 等於 TARGET_TIMESTAMP 時回傳 false。
- * 使用時：把 @Mixin 的 targets 改成實際會呼叫 Date.after(...) 的類別。
- */
 @Mixin(targets = "com.example.targetmod.TargetClass", remap = false)
 @Pseudo
 public class ExpiryBypassMixinFiltered {
-
     private static final long TARGET_TIMESTAMP = 1773504000082L;
 
     @Redirect(
-        method = "<init>", // 修改為實際要攔截的方法或使用多個 mixin 覆蓋不同方法
+        method = "<init>",
         at = @At(value = "INVOKE", target = "Ljava/util/Date;after(Ljava/util/Date;)Z"),
         remap = false
     )
@@ -32,3 +31,4 @@ public class ExpiryBypassMixinFiltered {
         return instance.after(other);
     }
 }
+*/

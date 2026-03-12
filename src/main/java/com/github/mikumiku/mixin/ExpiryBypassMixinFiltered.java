@@ -1,3 +1,8 @@
+// ExpiryBypassMixinFiltered.java — 已停用
+// 原本此檔會 mixin 到 `java.util.Date`，可能導致 MixinTargetAlreadyLoadedException。
+// 為避免在初始化期間修改 JDK 類，此檔案已移除 mixin 實作並保留為註解紀錄。
+
+/*
 package com.github.mikumiku.mixin;
 
 import org.spongepowered.asm.mixin.Mixin;
@@ -20,3 +25,4 @@ public class ExpiryBypassMixinFiltered {
         }
     }
 }
+*/
