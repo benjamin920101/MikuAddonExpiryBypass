@@ -8,13 +8,6 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 import java.util.Date;
 
 @Mixin(targets = {
-    "com.github.mikumiku.addon.IiiiIiiIII",
-    "com.github.mikumiku.addon.iiiIIIiiii",
-    "com.github.mikumiku.addon.IiiIiIiiiI",
-    "com.github.mikumiku.addon.iIIIiIiiiI",
-    "com.github.mikumiku.addon.IiIIiIiIii",
-    "com.github.mikumiku.addon.IiiIiIiiiI",
-    "com.github.mikumiku.addon.iiIiiiiIII",
     "com.github.mikumiku.addon.iIiIIIiIIi",
     "com.github.mikumiku.addon.mixinface.MySettings",
     "com.github.mikumiku.addon.iIiiIiiIii",
@@ -42,7 +35,7 @@ import java.util.Date;
     "com.github.mikumiku.addon.iIiIIIIiIi",
     "com.github.mikumiku.addon.IIIiIIiiiI",
     "com.github.mikumiku.addon.IiIiiiIiiI",
-    "com.github.mikumiku.addon.MagicMix",
+    "com.github.mikumiku.addon.mixinface.MagicMix",
     "com.github.mikumiku.addon.IIIIiIiIii",
     "com.github.mikumiku.addon.iIiIiiIIIi"
 }, remap = false)
