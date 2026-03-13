@@ -42,7 +42,5 @@ jar {
 	from("LICENSE") {
 		rename { "${it}_${project.base.archivesName.get()}" }
 	}
-	// 排除不需要的 mixin 配置文件，只保留 mikuaddon.mixins.json
-	exclude("expirybypass.mixins.json")
-	exclude("mixins.json")
+	// 保留所有 mixin 配置文件
 }
