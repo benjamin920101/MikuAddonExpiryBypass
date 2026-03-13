@@ -4,8 +4,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Pseudo;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import java.util.Date;
 
 @Mixin(targets = {
     "com.github.mikumiku.addon.ok.MikuMikuAddon",
@@ -53,9 +52,15 @@ public class AddonExpiryRedirectMixin {
         return 0L;
     }
 
-    // 若某些類直接在構造中 throw，嘗試取消構造函數以避免拋出
-    @Inject(method = "<init>", at = @At("HEAD"), cancellable = true, remap = false)
-    private void cancelInit(CallbackInfo ci) {
-        ci.cancel();
+    // 已移除全域取消構造的策略，以免破壞重要初始化（例如訂閱事件總線）。
+
+    // 攔截 java.util.Date 的 after 方法調用（在構造內），強制回傳 false 以跳過 throw
+    @Redirect(
+        method = "<init>()V",
+        at = @At(value = "INVOKE", target = "Ljava/util/Date;after(Ljava/util/Date;)Z"),
+        remap = false
+    )
+    private boolean redirectAfter(Date instance, Date when) {
+        return false;
     }
 }
