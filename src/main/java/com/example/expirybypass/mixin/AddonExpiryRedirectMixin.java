@@ -6,24 +6,20 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import java.util.Date;
 
+// 只 mixin 确定的类，避免接口类型不匹配
 @Mixin(targets = {
     "com.github.mikumiku.addon.ok.MikuMikuAddon",
     "com.github.mikumiku.addon.MikuLauncher",
     "com.github.mikumiku.addon.ok.PreLaunchInitializer",
-    "com.github.mikumiku.addon.iIiIIIiIIi",
     "com.github.mikumiku.addon.iIiiIiiIii",
     "com.github.mikumiku.addon.IiIiiiiIii",
-    "com.github.mikumiku.addon.iiIIiiiIIi",
-    "com.github.mikumiku.addon.IiIIIiIiiI",
     "com.github.mikumiku.addon.mixinface.MySettings",
     "com.github.mikumiku.addon.mixinface.MoveEvent",
     "com.github.mikumiku.addon.mixinface.MagicMix",
     "com.github.mikumiku.addon.iiIIIIiiiI",
-    "com.github.mikumiku.addon.IiIIiIiIii",
     "com.github.mikumiku.addon.IIIiiIIiii",
     "com.github.mikumiku.addon.IiIIiIIiiI",
     "com.github.mikumiku.addon.IiiIIiIIiI",
-    "com.github.mikumiku.addon.iIIiIIiIIi",
     "com.github.mikumiku.addon.iIIIiiiiiI",
     "com.github.mikumiku.addon.IIIiiiIIIi",
     "com.github.mikumiku.addon.iIIIIiIiii",
@@ -61,8 +57,6 @@ public class AddonExpiryRedirectMixin {
     private long redirectNanoTime() {
         return 0L;
     }
-
-    // 已移除全域取消構造的策略，以免破壞重要初始化（例如訂閱事件總線）。
 
     // 攔截 java.util.Date 的 after 方法調用（在構造內），強制回傳 false 以跳過 throw
     @Redirect(
