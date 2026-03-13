@@ -11,6 +11,7 @@ import java.util.Date;
     "com.github.mikumiku.addon.ok.MikuMikuAddon",
     "com.github.mikumiku.addon.MikuLauncher",
     "com.github.mikumiku.addon.ok.PreLaunchInitializer",
+    "com.github.mikumiku.addon.iIiIiIiIIi",
     "com.github.mikumiku.addon.iIiiIiiIii",
     "com.github.mikumiku.addon.IiIiiiiIii",
     "com.github.mikumiku.addon.mixinface.MoveEvent",

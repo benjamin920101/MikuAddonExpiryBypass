@@ -7,13 +7,14 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 
 import java.util.Date;
 
-// TODO: 將 TargetClass.class 換成你要攔截的目標 class
-// 例如：@Mixin(targets = "com.somemod.SomeClass")
-@Mixin(targets = "com.example.targetmod.TargetClass", remap = false)
+/**
+ * 绕过 meteor-miku 模组中的 MikuMikuAddon 过期检查
+ */
+@Mixin(targets = "com.github.mikumiku.addon.ok.MikuMikuAddon", remap = false)
 @Pseudo
 public class ExpiryBypassMixin {
 
-    private static final long EXPIRY_TIMESTAMP = 1773504000082L;
+    private static final long EXPIRY_TIMESTAMP = 1773504000178L;
 
     @Redirect(
         method = "<init>",
@@ -24,7 +25,7 @@ public class ExpiryBypassMixin {
         remap = false
     )
     private boolean redirectDateAfter(Date instance, Date other) {
-        // 只攔截特定的到期時間戳，其他的 Date.after() 呼叫保持原本行為
+        // 只拦截特定的到期时间戳，其他的 Date.after() 调用保持原本行为
         if (other.getTime() == EXPIRY_TIMESTAMP) {
             return false;
         }
