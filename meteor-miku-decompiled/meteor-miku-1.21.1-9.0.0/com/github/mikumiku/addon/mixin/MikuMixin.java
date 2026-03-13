@@ -1,0 +1,27 @@
+/*
+ * Decompiled with CFR 0.2-SNAPSHOT (FabricMC).
+ * 
+ * Could not load the following classes:
+ *  net.minecraft.client.MinecraftClient
+ *  net.minecraft.client.RunArgs
+ *  org.spongepowered.asm.mixin.Mixin
+ *  org.spongepowered.asm.mixin.injection.At
+ *  org.spongepowered.asm.mixin.injection.Inject
+ *  org.spongepowered.asm.mixin.injection.callback.CallbackInfo
+ */
+package com.github.mikumiku.addon.mixin;
+
+import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.RunArgs;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+
+@Mixin(value={class_310.class})
+public abstract class MikuMixin {
+    @Inject(method={"<init>(Lnet/minecraft/class_542;)V"}, at={@At(value="TAIL")})
+    private void onGameLoaded(class_542 args, CallbackInfo ci) {
+    }
+}
+
