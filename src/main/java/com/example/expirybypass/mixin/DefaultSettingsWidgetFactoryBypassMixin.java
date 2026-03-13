@@ -3,26 +3,22 @@ package com.example.expirybypass.mixin;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Pseudo;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Redirect;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 /**
  * 绕过 meteor-miku 模组中的版本检查
- * 拦截 DefaultSettingsWidgetFactory 中对 MySettings 的实例化
+ * 在 DefaultSettingsWidgetFactory 初始化时记录日志
  */
 @Mixin(targets = "meteordevelopment.meteorclient.gui.DefaultSettingsWidgetFactory", remap = false)
 @Pseudo
 public class DefaultSettingsWidgetFactoryBypassMixin {
 
     /**
-     * 拦截 MySettings 的构造函数调用，返回 null 或跳过实例化
+     * 在 DefaultSettingsWidgetFactory 构造函数返回时记录日志
      */
-    @Redirect(
-        method = "<init>",
-        at = @At(value = "NEW", target = "com/github/mikumiku/addon/mixinface/MySettings"),
-        remap = false
-    )
-    private Object redirectMySettingsCreation() {
-        // 返回 null 以跳过 MySettings 的初始化
-        return null;
+    @Inject(method = "<init>", at = @At("RETURN"), remap = false)
+    private void onInitReturn(CallbackInfo ci) {
+        System.out.println("[ExpiryBypass] DefaultSettingsWidgetFactory initialized");
     }
 }

@@ -6,14 +6,13 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import java.util.Date;
 
-// 只 mixin 确定的类，避免接口类型不匹配
+// 注意：MySettings 已由 DefaultSettingsWidgetFactoryBypassMixin 专门处理
 @Mixin(targets = {
     "com.github.mikumiku.addon.ok.MikuMikuAddon",
     "com.github.mikumiku.addon.MikuLauncher",
     "com.github.mikumiku.addon.ok.PreLaunchInitializer",
     "com.github.mikumiku.addon.iIiiIiiIii",
     "com.github.mikumiku.addon.IiIiiiiIii",
-    "com.github.mikumiku.addon.mixinface.MySettings",
     "com.github.mikumiku.addon.mixinface.MoveEvent",
     "com.github.mikumiku.addon.mixinface.MagicMix",
     "com.github.mikumiku.addon.iiIIIIiiiI",
