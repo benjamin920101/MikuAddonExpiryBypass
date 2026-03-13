@@ -39,7 +39,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
     "com.github.mikumiku.addon.IiIiiiIiiI",
     "com.github.mikumiku.addon.IIIIiIiIii",
     "com.github.mikumiku.addon.iIiIiiIIIi"
-}, remap = false)
+}, remap = false, priority = -1000)
 @Pseudo
 public class AddonExpiryRedirectMixin {
 
