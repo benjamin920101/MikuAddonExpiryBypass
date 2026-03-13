@@ -8,12 +8,9 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 import java.util.Date;
 
 /**
- * 绕过 meteor-miku 模组中的 DefaultSettingsWidgetFactory 和 WSelectedCountLabel 过期检查
+ * 绕过 meteor-miku 模组中的 WSelectedCountLabel 过期检查
  */
-@Mixin(targets = {
-    "meteordevelopment.meteorclient.gui.DefaultSettingsWidgetFactory",
-    "com.github.mikumiku.addon.mixinface.MySettings$WSelectedCountLabel"
-}, remap = false)
+@Mixin(targets = "com.github.mikumiku.addon.mixinface.MySettings$WSelectedCountLabel", remap = false)
 @Pseudo
 public class DefaultSettingsWidgetFactoryBypassMixin {
 
