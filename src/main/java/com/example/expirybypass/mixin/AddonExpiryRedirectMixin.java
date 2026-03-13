@@ -52,15 +52,45 @@ public class AddonExpiryRedirectMixin {
         return 0L;
     }
 
+    // 重定向 System.nanoTime() 以防止基于 nanoTime 的检查
+    @Redirect(
+        method = {"<init>", "<clinit>", "*"},
+        at = @At(value = "INVOKE", target = "Ljava/lang/System;nanoTime()J"),
+        remap = false
+    )
+    private long redirectNanoTime() {
+        return 0L;
+    }
+
     // 已移除全域取消構造的策略，以免破壞重要初始化（例如訂閱事件總線）。
 
     // 攔截 java.util.Date 的 after 方法調用（在構造內），強制回傳 false 以跳過 throw
     @Redirect(
-        method = "<init>()V",
+        method = {"<init>", "*"},
         at = @At(value = "INVOKE", target = "Ljava/util/Date;after(Ljava/util/Date;)Z"),
         remap = false
     )
-    private boolean redirectAfter(Date instance, Date when) {
+    private boolean redirectDateAfter(Date instance, Date when) {
         return false;
+    }
+    
+    // 重定向 Date.before 方法
+    @Redirect(
+        method = {"<init>", "*"},
+        at = @At(value = "INVOKE", target = "Ljava/util/Date;before(Ljava/util/Date;)Z"),
+        remap = false
+    )
+    private boolean redirectDateBefore(Date instance, Date when) {
+        return true;
+    }
+    
+    // 重定向 Date.getTime 返回一个过去的时间
+    @Redirect(
+        method = {"<init>", "*"},
+        at = @At(value = "INVOKE", target = "Ljava/util/Date;getTime()J"),
+        remap = false
+    )
+    private long redirectDateGetTime(Date instance) {
+        return 0L;
     }
 }

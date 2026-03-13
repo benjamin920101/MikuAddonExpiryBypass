@@ -1,0 +1,16 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.example.expirybypass.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "ExpiryBypassMixin",
+    "AddonExpiryRedirectMixin",
+    "MikuExpiryBypassMixin",
+    "MySettingsBypassMixin",
+    "DefaultSettingsWidgetFactoryBypassMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
