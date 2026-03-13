@@ -7,7 +7,8 @@
     "ExpiryBypassMixin",
     "AddonExpiryRedirectMixin",
     "MikuExpiryBypassMixin",
-    "DefaultSettingsWidgetFactoryBypassMixin"
+    "DefaultSettingsWidgetFactoryBypassMixin",
+    "MySettingsBypassMixin"
   ],
   "injectors": {
     "defaultRequire": 1
