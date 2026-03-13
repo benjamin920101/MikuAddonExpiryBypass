@@ -1,12 +1,13 @@
 package com.example.mixin;
 
-import com.github.mikumiku.addon.iIiIiIiIIi;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Pseudo;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import java.util.Date;
 
-@Mixin(value = iIiIiIiIIi.class, priority = -2000, remap = false)
+@Pseudo
+@Mixin(targets = "com.github.mikumiku.addon.iIiIiIiIIi", priority = -2000, remap = false)
 public class MikuBypassMixin {
     /**
      * 攔截建構子中的 Date.after() 調用
